@@ -1,5 +1,7 @@
 import Ball from "./ball.js";
+import Brick from "./brick.js"
 import InputHandler from "./inputhandler.js";
+import {buildLevel, level1}  from "./levels.js"
 import Paddle from "./paddle.js";
 
 export default class Game {
@@ -22,6 +24,10 @@ export default class Game {
       object.update(deltaTime);
     });
 
+    this.gameObjects = this.gameObjects.filter((object) => {
+      return !object.markedForDeletion;
+    });
+
   }
 
   start() {
@@ -29,8 +35,11 @@ export default class Game {
     this.ball = new Ball(this);
     this.paddle = new Paddle(this);
 
+    // Fill level with bricks
+    let bricks = buildLevel(this, level1);
+
     // Combine all objects of the game in on object
-    this.gameObjects = [this.ball, this.paddle];
+    this.gameObjects = [this.ball, this.paddle, ...bricks];
 
     // Add InputHandler:
     new InputHandler(this.paddle);
