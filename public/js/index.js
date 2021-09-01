@@ -10,7 +10,6 @@ let lastTime = 0;
 
 // Create an instance of the game class
 const game = new Game(GAME_WIDTH, GAME_HEIGHT);
-game.start();
 
 // Game loop
 function gameLoop(timestamp) {

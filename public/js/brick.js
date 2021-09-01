@@ -27,6 +27,7 @@ export default class Brick {
     if (detectCollision(this.game.ball, this)) {
       this.game.ball.speed.y *= -1;
       this.markedForDeletion = true;
+      this.game.gameScore += 1;
     }
 
   }

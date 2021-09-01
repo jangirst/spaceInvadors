@@ -21,5 +21,5 @@ export function detectCollision(ball, gameObject) {
   } else {
     return false;
   }
-  
+
 }
